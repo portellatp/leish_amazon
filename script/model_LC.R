@@ -3,20 +3,6 @@ library(spdep)
 library(dplyr)
 library(INLA)
 
-#function to filter the data from Amazon cities
-
-get.amazon<-function(data, muni){
-  
-  cities_am<-read.csv("dados_tratados/cities_am.csv")
-  cities_am$code_muni2<-substr(cities_am$code_muni,1,6)
-  am<-c(cities_am$code_muni2)
-  
-  cut_am<- data %>% filter ({{muni}} %in% am)
-  
-  return(cut_am)
-  
-}
-
 
 ##reading cenralized data
 df<- read.csv("data/data_centralized.csv")
